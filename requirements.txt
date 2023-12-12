@@ -1,0 +1,7 @@
+transformers
+pytorch
+ipykernel
+datasets
+peft
+opacus
+evaluate
