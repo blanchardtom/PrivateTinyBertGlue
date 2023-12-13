@@ -5,3 +5,4 @@ datasets
 peft
 opacus
 evaluate
+scikit-learn
