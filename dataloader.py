@@ -37,11 +37,11 @@ def get_dataloader(task:str, model_checkpoint:str, split:str, dataloader_drop_la
 
     def preprocess_function(examples):
         if sentence2_key is None:
-            return tokenizer(examples[sentence1_key], truncation=True, padding='max_length', max_length=512)
-        return tokenizer(examples[sentence1_key], examples[sentence2_key], truncation=True, padding='max_length', max_length=512)
+            return tokenizer(examples[sentence1_key], truncation=True, padding='max_length', max_length=502)
+        return tokenizer(examples[sentence1_key], examples[sentence2_key], truncation=True, padding='max_length', max_length=502)
     
     tokenizer = BertTokenizerFast.from_pretrained(model_checkpoint, use_fast=True)
-    data_collator = DataCollatorWithPadding(tokenizer, max_length=512)
+    data_collator = DataCollatorWithPadding(tokenizer, max_length=502)
 
     actual_task = "mnli" if task == "mnli-mm" else task
     dataset = load_dataset("glue", actual_task)
