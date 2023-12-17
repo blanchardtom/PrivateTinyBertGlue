@@ -35,6 +35,8 @@ def get_dataloader(task:str, model_checkpoint:str, split:str, dataloader_drop_la
 
     sentence1_key, sentence2_key = task_to_keys[task]
 
+    # padding for max_length = 502 because of the max token limit of 512 of BERT models - num_worker_tokens 
+    # used for prefix and soft-prompting
     def preprocess_function(examples):
         if sentence2_key is None:
             return tokenizer(examples[sentence1_key], truncation=True, padding='max_length', max_length=502)
